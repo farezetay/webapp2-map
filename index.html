@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma Carte</title>
+
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link 
+        rel="stylesheet" 
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity=""
+        crossorigin=""
+    />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="map.css">
+    
+
+    
+
+
+</head>
+<body>
+
+   <header>
+      <h1>Ma Carte Leaflet</h1>
+      <button id="clearMarkersBtn" onclick="clearMarkers()">Supprimer tous les marqueurs</button>
+   </header>
+
+    <!-- Conteneur de la carte -->
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script 
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <!-- Script personnalisé -->
+    <script src="map.js" type="module"></script>
+
+
+</body>
+</html>

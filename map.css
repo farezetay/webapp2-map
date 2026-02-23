@@ -1,0 +1,66 @@
+/**************************************************
+ COULEURS UTILISÉES (Coolors)
+ #023C40 (principal sombre)
+ #C3979F (accent rose)
+ #0AD3FF (bleu)
+ #78FFD6 (turquoise clair)
+ #E1FAF9 (fond très clair)
+**************************************************/
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #E1FAF9;
+}
+
+/* Header : titre et bouton alignés horizontalement */
+header {
+    background-color: #023C40;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between; /* titre à gauche, bouton à droite */
+    align-items: center;
+}
+
+/* Titre */
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* Bouton simple */
+#clearMarkersBtn {
+    background-color: #0AD3FF; /* couleur bleu du set Coolors */
+    color: #023C40;             /* texte sombre */
+    border: none;               /* pas de bordure */
+    padding: 8px 15px;          /* taille du bouton */
+    border-radius: 5px;         /* arrondi léger */
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+/* Titre */
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Carte */
+#map {
+    height: 90vh; /* 90% de la hauteur écran */
+    width: 100%;
+}
+
+/* Personnalisation popup Leaflet */
+.leaflet-popup-content-wrapper {
+    background-color: #78FFD6;
+    color: #023C40;
+    font-weight: 500;
+}
+
+.leaflet-popup-tip {
+    background-color: #78FFD6;
+}
