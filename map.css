@@ -64,3 +64,18 @@ h1 {
 .leaflet-popup-tip {
     background-color: #78FFD6;
 }
+
+.install {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #0AD3FF;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index:1000;
+}
+
+.hidden {
+    display: none;
+}
