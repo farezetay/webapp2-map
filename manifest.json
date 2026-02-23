@@ -1,0 +1,39 @@
+{
+  "short_name": "busStops",
+  "name": "Les bus autour de moi",
+  "description": "Trouvez les arrêts de bus à proximité en un clin d'œil.",
+  "icons": [
+    {
+      "src": "icons/favicon-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "icons/favicon-256x256.png",
+      "type": "image/png",
+      "sizes": "256x256",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/mobile.png",
+      "type": "image/png",
+      "sizes": "368x665",
+      "form_factor": "narrow",
+      "label": "Aperçu de l'application Les bus autour de moi"
+    },
+    {
+      "src": "screenshots/desktop.png",
+      "type": "image/png",
+      "sizes": "1922x933",
+      "form_factor": "wide",
+      "label": "Aperçu de l'application Les bus autour de moi sur desktop"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E1FAF9",
+  "theme_color": "#023C40"
+}
