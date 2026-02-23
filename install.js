@@ -1,76 +1,45 @@
-// ========================================
-// Gestion du bouton d'installation PWA
-// ========================================
+// install.js
 
-// On récupère les éléments HTML
-const installContainer = document.getElementById('install');
-const installBtn = document.getElementById('installBtn');
+let deferredPrompt;
+const installDiv = document.getElementById('install');
+const installBtn = document.getElementById('install-btn');
 
-// Si les éléments n'existent pas → on arrête tout
-if (!installContainer || !installBtn) {
-  console.warn("Éléments d'installation introuvables");
-} else {
+export function initInstallPrompt() {
+  // 1. On cache le bouton par défaut (optionnel si déjà fait en CSS)
+  installDiv.classList.add('hidden');
 
-  // Variable pour stocker l'événement d'installation
-  let deferredPrompt = null;
-
-  // ========================================
-  // 1️⃣ Vérifier si l'application est déjà installée
-  // ========================================
-
-  const isAppInstalled = () =>
-    window.matchMedia('(display-mode: standalone)').matches ||
-    window.navigator.standalone === true; // nécessaire pour iOS
-
-  if (isAppInstalled()) {
-    // Si déjà installée → on cache tout le bloc
-    installContainer.classList.add('hidden');
-  }
-
-  // ========================================
-  // 2️⃣ Capturer l'événement d'installation (Chrome / Android)
-  // ========================================
-
-  window.addEventListener('beforeinstallprompt', (event) => {
-    event.preventDefault(); // empêche la popup automatique
-
-    deferredPrompt = event; // on sauvegarde l'événement
-
-    // On affiche le bouton
-    installBtn.classList.remove('hidden');
-    installContainer.classList.remove('hidden');
+  // 2. On écoute l'événement du navigateur
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Empêche Chrome 67 et versions antérieures d'afficher l'invite automatiquement
+    e.preventDefault();
+    // On stocke l'événement pour l'utiliser plus tard
+    deferredPrompt = e;
+    // On affiche notre div de promotion d'installation
+    installDiv.classList.remove('hidden');
   });
 
-  // ========================================
-  // 3️⃣ Quand l'utilisateur clique sur le bouton
-  // ========================================
-
+  // 3. Gestion du clic sur le bouton
   installBtn.addEventListener('click', async () => {
-
     if (!deferredPrompt) return;
 
-    // Affiche la popup d'installation
+    // Affiche la boîte de dialogue d'installation native
     deferredPrompt.prompt();
 
     // Attend la réponse de l'utilisateur
     const { outcome } = await deferredPrompt.userChoice;
+    console.log(`Réponse de l'utilisateur : ${outcome}`);
 
-    console.log("Choix utilisateur :", outcome);
-
-    // On réinitialise
+    // On réinitialise la variable, elle ne peut servir qu'une fois
     deferredPrompt = null;
 
-    // On cache le bloc après tentative
-    installContainer.classList.add('hidden');
+    // On cache à nouveau le bouton
+    installDiv.classList.add('hidden');
   });
 
-  // ========================================
-  // 4️⃣ Quand l'application est installée
-  // ========================================
-
+  // 4. On cache le bouton si l'app est déjà installée
   window.addEventListener('appinstalled', () => {
-    console.log("Application installée !");
-    installContainer.classList.add('hidden');
+    installDiv.classList.add('hidden');
+    deferredPrompt = null;
+    console.log('L\'application a été installée avec succès !');
   });
-
 }

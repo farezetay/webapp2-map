@@ -2,7 +2,7 @@ import config from "./config.js";
 import { getDeviceLocation } from "./geo.js";
 import { laLouviere } from "./la-louviere.js";
 import { Bruxelles } from "./fontainebxl.js";
-import './install.js';
+import { initInstallPrompt } from './install.js';
 
 async function init() {
     const location = await getDeviceLocation()
@@ -113,4 +113,5 @@ function clearTravaux() {
 
 laLouviere(travauxLayer)
 Bruxelles(travauxLayer)
+initInstallPrompt()
 }
